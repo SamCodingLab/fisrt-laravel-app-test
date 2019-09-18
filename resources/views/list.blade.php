@@ -19,7 +19,7 @@
                 <h1>List de clients...</h1><br>
                     <ul>
                         @foreach ($clients as $client)
-                    <li>{{$client->name}} <a href="{{route('edit', [$client->id])}}">Modifié</a></li>
+                    <li>{{$client->name}} <a href="{{action('ClientsController@edit', [$client->id])}}">Modifié</a> <a href="{{action('ClientsController@delete', [$client->id])}}">Supprimé</a></li>
                         @endforeach
                     </ul>
                 <form action="list" method="post">

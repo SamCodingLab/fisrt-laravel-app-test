@@ -35,8 +35,28 @@ class ClientsController extends Controller
 
     public function edit($id){
         $clients = Client::find($id);
-        dd($clients);
-        return view('edit');
+        // dd($clients->name);
+        return view('edit', ['clients' => $clients]);
     } 
+
+    public function update($id){
+        $name = request('name');
+
+
+        $clients = Client::find($id);
+        
+        $clients->name = $name;
+        $clients->save();
+        return redirect('/list');
+    }
+
+    public function delete($id){
+        $clients = Client::find($id);
+        $clients->delete();
+        
+        return redirect('/list');
+
+    }
+
 }
 

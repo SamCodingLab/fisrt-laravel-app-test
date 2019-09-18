@@ -16,6 +16,8 @@ Route::get('/', function () {
 });
 Route::get('list', 'ClientsController@list');
 Route::post('list', 'ClientsController@store');
-Route::get('edit/{id}', 'ClientsController@edit')->name('edit');
+Route::get('{id}/edit', 'ClientsController@edit')->name('edit');
+Route::post('edit/{id}', 'ClientsController@update');
+Route::get('edit/{id}', 'ClientsController@delete');
 
 // Route::post('edit', 'edit');

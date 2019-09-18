@@ -18,13 +18,26 @@
             <div class="container"><br>
                 <h1>Edit !</h1>
                     <br>
-                <form action="list" method="post">
-                    <div class="form-control">
-                        <input type="text" name="edit" class="form-control">
-                    </div>
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                          @endforeach
+                      </ul>
+                    </div><br />
+                  @endif
+                      
+                  
+                <form action="{{action('ClientsController@update', [$clients->id])}}" method="post">
+                        <div class="form-group">
+                                @csrf
+                                {{-- @method('PATCH') --}}
+                             <input type="text" name="name" class="form-control" value="{{$clients->name}}">
+                        </div>
+                    <button type="submit" class="btn btn-danger">Modifié</button>
                 </form>
             </div>
-
         @endsection
         </div>
     </body>
