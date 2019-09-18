@@ -1,25 +1,23 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Crud App</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        
-    </head>
-    <body>
         @extends('layout')
 
         @section('content')
             
             <div class="container">
+                    @if ($message = Session::get('success'))
+                    <div class="alert alert-success" role="alert">
+                            <strong>{{ $message }}</strong>
+                    </div>
+                    @endif
+                    @if ($message = Session::get('danger'))
+                    <div class="alert alert-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                    </div>
+                    @endif
                 <h1>List de clients...</h1><br>
                     <ul>
                         @foreach ($clients as $client)
-                    <li>{{$client->name}} <a href="{{action('ClientsController@edit', [$client->id])}}">Modifié</a> <a href="{{action('ClientsController@delete', [$client->id])}}">Supprimé</a></li>
+                    <li>{{$client->name}} <a href="{{action('ClientsController@edit', [$client->id])}}">Modifié</a> <em><a style="color:red" href="{{action('ClientsController@delete', [$client->id])}}">Supprimé</a></em> </li>
                         @endforeach
                     </ul>
                 <form action="list" method="post">
@@ -35,7 +33,6 @@
                 </form>
             </div>
 
-        @endsection
         </div>
-    </body>
-</html>
+        @endsection
+

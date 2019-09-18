@@ -19,7 +19,7 @@
                               <a class="nav-link active" href="/">Acceuil</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="list">List</a>
+                              <a class="nav-link" href="/list">List</a>
                             </li>
                           </ul>
                 @yield('content')
