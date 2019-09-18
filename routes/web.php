@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 Route::get('list', 'ClientsController@list');
 Route::post('list', 'ClientsController@store');
+Route::get('edit/{id}', 'ClientsController@edit')->name('edit');
+// Route::post('edit', 'edit');

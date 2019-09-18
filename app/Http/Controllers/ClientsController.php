@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests;
 use App\Client;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 
 class ClientsController extends Controller
 {
@@ -15,12 +17,26 @@ class ClientsController extends Controller
     }
 
     public function store(){
-        
-        $clients = new Client();
-        $clients->name = request('name');
-        $clients->save();
+        request()->validate([
+            'name' =>  'required'
+        ]);
 
-        return redirect('list');
+
+
+        $name = request('name');
+
+
+        $clients = new Client;
+        $clients->name = $name;
+        $clients->save();
+        return back();
     }
+    
+
+    public function edit($id){
+        $clients = Client::find($id);
+        dd($clients);
+        return view('edit');
+    } 
 }
 
